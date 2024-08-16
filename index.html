@@ -15,7 +15,7 @@
         <style>
         #map {
             width: 1459px;
-            height: 978px;
+            height: 612px;
         }
         </style>
         <title>Let's Get Together Quantile Map (Last Updated 08/01/2024)</title>
@@ -55,7 +55,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[40.270303366969074,-107.99318922517544],[57.83754772031981,-64.84088479462345]]);
+        }).fitBounds([[38.233444553564276,-119.32286310032163],[57.83745224947886,-52.97469602756874]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -136,24 +136,26 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">__Federal Riding</th>\
-                        <td>' + (feature.properties['__Federal Riding'] !== null ? autolinker.link(feature.properties['__Federal Riding'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['FEDENAME'] !== null ? autolinker.link(feature.properties['FEDENAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FEDNAME'] !== null ? autolinker.link(feature.properties['FEDNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['__Federal Riding'] !== null ? autolinker.link(feature.properties['__Federal Riding'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">__Number of Clients</th>\
-                        <td>' + (feature.properties['__Number of Clients'] !== null ? autolinker.link(feature.properties['__Number of Clients'].toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="__Number of Clients">' + (feature.properties['__Number of Clients'] !== null ? autolinker.link(feature.properties['__Number of Clients'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">__Number of Tech Collect Events (2024)</th>\
-                        <td>' + (feature.properties['__Number of Tech Collect Events (2024)'] !== null ? autolinker.link(feature.properties['__Number of Tech Collect Events (2024)'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['__Number of Tech Collect Events (2024)'] !== null ? autolinker.link(feature.properties['__Number of Tech Collect Events (2024)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">__Corporate Donations in lbs (2023-24)</th>\
-                        <td>' + (feature.properties['__Corporate Donations in lbs (2023-24)'] !== null ? autolinker.link(feature.properties['__Corporate Donations in lbs (2023-24)'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['__Corporate Donations in lbs (2023-24)'] !== null ? autolinker.link(feature.properties['__Corporate Donations in lbs (2023-24)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">__Number of Collected Tech (2023 onwards)</th>\
-                        <td>' + (feature.properties['__Number of Collected Tech (2023 onwards)'] !== null ? autolinker.link(feature.properties['__Number of Collected Tech (2023 onwards)'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['__Number of Collected Tech (2023 onwards)'] !== null ? autolinker.link(feature.properties['__Number of Collected Tech (2023 onwards)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -339,20 +341,6 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-        var baseMaps = {};
-        var overlaysTree = [
-            {label: 'ELECTORAL_DISTRICT<br /><table><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_000.png" /></td><td>0 - 0</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_0161.png" /></td><td>0 - 1.6</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_1622.png" /></td><td>1.6 - 2</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_243.png" /></td><td>2 - 4</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_454.png" /></td><td>4 - 5</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_585.png" /></td><td>5 - 8</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_81016.png" /></td><td>8 - 10.1</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_1011447.png" /></td><td>10.1 - 14.4</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_1441948.png" /></td><td>14.4 - 19.4</td></tr><tr><td style="text-align: center;"><img src="legend/ELECTORAL_DISTRICT_1_194779.png" /></td><td>19.4 - 77</td></tr></table>', layer: layer_ELECTORAL_DISTRICT_1},
-            {label: "OSM Standard", layer: layer_OSMStandard_0},]
-        var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
-            collapsed: false, 
-        });
-        lay.addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
             layer: layer_ELECTORAL_DISTRICT_1,
