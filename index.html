@@ -15,7 +15,7 @@
         <style>
         #map {
             width: 1459px;
-            height: 612px;
+            height: 978px;
         }
         </style>
         <title>Let's Get Together Quantile Map (Last Updated 08/01/2024)</title>
@@ -55,7 +55,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[38.233444553564276,-119.32286310032163],[57.83745224947886,-52.97469602756874]]);
+        }).fitBounds([[40.270303366969074,-107.99318922517544],[57.83754772031981,-64.84088479462345]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -136,26 +136,24 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['FEDENAME'] !== null ? autolinker.link(feature.properties['FEDENAME'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['FEDNAME'] !== null ? autolinker.link(feature.properties['FEDNAME'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['__Federal Riding'] !== null ? autolinker.link(feature.properties['__Federal Riding'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">__Federal Riding</th>\
+                        <td>' + (feature.properties['__Federal Riding'] !== null ? autolinker.link(feature.properties['__Federal Riding'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">__Number of Clients</th>\
-                        <td class="visible-with-data" id="__Number of Clients">' + (feature.properties['__Number of Clients'] !== null ? autolinker.link(feature.properties['__Number of Clients'].toLocaleString()) : '') + '</td>\
+                        <td>' + (feature.properties['__Number of Clients'] !== null ? autolinker.link(feature.properties['__Number of Clients'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['__Number of Tech Collect Events (2024)'] !== null ? autolinker.link(feature.properties['__Number of Tech Collect Events (2024)'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">__Number of Tech Collect Events (2024)</th>\
+                        <td>' + (feature.properties['__Number of Tech Collect Events (2024)'] !== null ? autolinker.link(feature.properties['__Number of Tech Collect Events (2024)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['__Corporate Donations in lbs (2023-24)'] !== null ? autolinker.link(feature.properties['__Corporate Donations in lbs (2023-24)'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">__Corporate Donations in lbs (2023-24)</th>\
+                        <td>' + (feature.properties['__Corporate Donations in lbs (2023-24)'] !== null ? autolinker.link(feature.properties['__Corporate Donations in lbs (2023-24)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['__Number of Collected Tech (2023 onwards)'] !== null ? autolinker.link(feature.properties['__Number of Collected Tech (2023 onwards)'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">__Number of Collected Tech (2023 onwards)</th>\
+                        <td>' + (feature.properties['__Number of Collected Tech (2023 onwards)'] !== null ? autolinker.link(feature.properties['__Number of Collected Tech (2023 onwards)'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
